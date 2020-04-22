@@ -2,19 +2,18 @@ package co.com.udem.nomina.util;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-
 import co.com.udem.nomina.dto.EmpleadoDTO;
 
 public class LecturaArchivo {
 	
 	private static final Logger logger = LogManager.getLogger(LecturaArchivo.class);
-	private Hashtable<String, EmpleadoDTO> listaEmpleados = new Hashtable<String, EmpleadoDTO>();
+	private HashMap<String, EmpleadoDTO> listaEmpleados = new HashMap<String, EmpleadoDTO>();
 	private int cantidadaRegistro = 0;
 	
 	public String leerArchivo() {
@@ -32,9 +31,7 @@ public class LecturaArchivo {
 			}		
 			
 		} catch (FileNotFoundException e) {
-			mensaje = "El archivo no esta en la ruta especificada";
-			//e.printStackTrace();
-			//logger.error(e.getMessage());
+			mensaje = "El archivo no esta en la ruta especificada";			
 		}finally {
 			if(scanner != null) {
 				scanner.close();
@@ -62,7 +59,7 @@ public class LecturaArchivo {
 		scanner.close();
 	}
 	
-	private void imprimirEmpleadosArchivo(Hashtable<String, EmpleadoDTO> listaEmpleados) {
+	private void imprimirEmpleadosArchivo(HashMap<String, EmpleadoDTO> listaEmpleados) {
 		BasicConfigurator.configure();
 		logger.info(listaEmpleados);
 		
